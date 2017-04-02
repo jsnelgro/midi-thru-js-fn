@@ -9,6 +9,10 @@ var console = { log: function (val) { outlet(1, Number(val)) } }
 var log = console.log
 var out = outlet
 
+var int = function (value) {
+  return Math.floor(Number(value))
+}
+
 var setTimeout = function (fn, ms) {
   var tsk = new Task(fn)
   tsk.schedule(ms)
@@ -71,6 +75,14 @@ var valscale = function (value, e1, e2) {
   return scale(value, 0.0, 1.0, e1, e2)
 }
 
+var scaletoval = function (value, s1, s2) {
+  return scale(value, s1, s2, 0.0, 1.0)
+}
+
+var valtosteps = function (value, steps) {
+  return scaletoval(int(valscale(value, 0, steps)), 0, steps)
+}
+
 var valtomidi = function (value) {
   return Math.floor(valscale(value, 0, 127))
 }
@@ -126,7 +138,7 @@ var val5 = 0
 var val6 = 0
 var val7 = 0
 var val8 = 0
-var memory = {}
+var state = {}
 var usrfn = 'if (isNote) {} else { outlet(1, val1); }'
 
 var tempo = 120
