@@ -80,7 +80,7 @@ var scaletoval = function (value, s1, s2) {
 }
 
 var valtosteps = function (value, steps) {
-  return scaletoval(int(valscale(value, 0, steps)), 0, steps)
+  return scaletoval(int(valscale(value, 0, steps-1)), 0, steps-1)
 }
 
 var valtomidi = function (value) {
